@@ -104,6 +104,7 @@ def api_edit(taxi_id) -> str:
 
 @app.route('/api/v1/taxis/<int:taxi_id>', methods=['DELETE'])
 def api_delete(taxi_id) -> str:
+    resp = Response(status=200, mimetype='application/json')
     return resp
 
 
