@@ -94,33 +94,16 @@ def api_retrieve(taxi_id) -> str:
 
 @app.route('/api/v1/taxis/', methods=['POST'])
 def api_add() -> str:
-    content = request.json
-    cursor = mysql.get_db().cursor()
-    inputData = (content['Distance'], content['Fare'])
-    sql_insert_query = """INSERT INTO tblTaxiImport (distance_miles, fare) VALUES (%s, %s) """
-    cursor.execute(sql_insert_query, inputData)
-    mysql.get_db().commit()
     resp = Response(status=201, mimetype='application/json')
-
+    return resp
 
 @app.route('/api/v1/taxis/<int:taxi_id>', methods=['PUT'])
 def api_edit(taxi_id) -> str:
-    cursor = mysql.get_db().cursor()
-    content = request.json
-    inputData = (content['Distance (Miles)'], content['Fare'] , taxi_id)
-    sql_update_query = """UPDATE tblTaxiImport t SET t.distance_miles = %s, t.fare = %s WHERE t.id = %s """
-    cursor.execute(sql_update_query, inputData)
-    mysql.get_db().commit()
     resp = Response(status=200, mimetype='application/json')
     return resp
 
 @app.route('/api/v1/taxis/<int:taxi_id>', methods=['DELETE'])
 def api_delete(taxi_id) -> str:
-    cursor = mysql.get_db().cursor()
-    sql_delete_query = """DELETE FROM tblTaxiImport WHERE id=%s """
-    cursor.execute(sql_delete_query, taxi_id)
-    mysql.get_db().commit()
-    resp = Response(status=200, mimetype='application/json')
     return resp
 
 
