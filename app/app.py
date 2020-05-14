@@ -92,11 +92,11 @@ def api_retrieve(taxi_id) -> str:
     return resp
 
 
-@app.route('/api/v1/taxis/', methods=['POST'])
+@app.route('/api/v1/taxis', methods=['POST'])
 def api_add() -> str:
     content = request.json
     cursor = mysql.get_db().cursor()
-    inputData = (content['Distance'], content['Fare'])
+    inputData = (content['distance_miles'], content['fare'])
     sql_insert_query = """INSERT INTO tblTaxiImport (distance_miles, fare) VALUES (%s, %s) """
     cursor.execute(sql_insert_query, inputData)
     mysql.get_db().commit()
@@ -107,7 +107,7 @@ def api_add() -> str:
 def api_edit(taxi_id) -> str:
     cursor = mysql.get_db().cursor()
     content = request.json
-    inputData = (content['Distance (Miles)'], content['Fare'] , taxi_id)
+    inputData = (content['distance_miles'], content['fare'] , taxi_id)
     sql_update_query = """UPDATE tblTaxiImport t SET t.distance_miles = %s, t.fare = %s WHERE t.id = %s """
     cursor.execute(sql_update_query, inputData)
     mysql.get_db().commit()
