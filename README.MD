@@ -16,6 +16,8 @@ This project is a homework assignment to teach how to get Pycharm setup with Doc
 
 ## Screenshots
 * [Screenshots from Previous Assignment](screenshots)
+* [Screenshots from Assignment 3](screenshots/Assignment3)
+* [Screenshots from Assignment 4](screenshots/Assignment4)
 
 ## Assignment 1 Readings
 * [What is an HTTP API?](https://www.smashingmagazine.com/2018/01/understanding-using-rest-api/)
